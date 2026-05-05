@@ -6,14 +6,14 @@ const fraunces = Fraunces({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
   style: ['normal', 'italic'],
-  variable: '--font-display',
+  variable: '--font-fraunces',
   display: 'swap'
 });
 
 const manrope = Manrope({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
-  variable: '--font-body',
+  variable: '--font-manrope',
   display: 'swap'
 });
 
@@ -28,41 +28,46 @@ export const metadata: Metadata = {
     'butter chicken Madrid',
     'Doli restaurante',
     'cocina india auténtica',
-    'naan Madrid'
+    'naan Madrid',
+    'Punjab Madrid'
   ],
   openGraph: {
     title: 'Doli · Restaurante Indio en Madrid',
     description:
-      'Cocina del norte de la India en el corazón de Madrid. Tandoor, currys de cocción lenta y especias molidas en casa.',
-    type: 'website',
-    locale: 'es_ES'
+      'Auténtica cocina del norte de la India en Madrid. Tandoor tradicional, currys de cocción lenta y especias molidas en casa.',
+    locale: 'es_ES',
+    type: 'website'
   }
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Restaurant',
-    name: 'Doli',
-    servesCuisine: 'Indian',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Madrid',
-      addressCountry: 'ES'
-    },
-    description:
-      'Restaurante indio en Madrid con tandoor tradicional, currys de cocción lenta y especias molidas en casa.'
-  };
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  name: 'Doli',
+  servesCuisine: 'Indian',
+  description:
+    'Restaurante indio en Madrid especializado en cocina del norte de la India: tandoor, currys de cocción lenta y especias molidas en casa.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Madrid',
+    addressCountry: 'ES'
+  }
+};
 
+export default function RootLayout({
+  children
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="es" className={`${fraunces.variable} ${manrope.variable} scroll-smooth`}>
-      <head>
+      <body className="font-body bg-bg text-ink antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-      </head>
-      <body className="font-body bg-bg text-ink antialiased">{children}</body>
+        {children}
+      </body>
     </html>
   );
 }
