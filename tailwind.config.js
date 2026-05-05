@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}'
+    './app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -16,7 +16,7 @@ module.exports = {
       },
       fontFamily: {
         display: ['var(--font-fraunces)', 'serif'],
-        body: ['var(--font-manrope)', 'system-ui', 'sans-serif']
+        sans: ['var(--font-manrope)', 'system-ui', 'sans-serif']
       }
     }
   },
