@@ -15,11 +15,8 @@ module.exports = {
         line: 'rgba(245, 235, 224, 0.1)'
       },
       fontFamily: {
-        display: ['var(--font-display)', 'serif'],
-        body: ['var(--font-body)', 'sans-serif']
-      },
-      letterSpacing: {
-        widest2: '0.2em'
+        display: ['var(--font-fraunces)', 'serif'],
+        body: ['var(--font-manrope)', 'system-ui', 'sans-serif']
       }
     }
   },
